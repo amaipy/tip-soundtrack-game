@@ -36,6 +36,13 @@ const next_btn = "footer .next_btn";
 
 const upperButton = 'upper-buttons';
 
+const contactForm = '.contact_form';
+const inputName = 'name';
+
+const submitForm = 'submit_form';
+const nameForm = 'name';
+const emailForm = 'mail';
+
 let lastWindow = 'quiz';
 
 let timeValue =  15;
@@ -534,7 +541,7 @@ const nextQuestion = () =>
   {
     clearInterval(counter); 
     clearInterval(counterLine); 
-    showResult(); 
+    nextScreenQuiz(); 
   }
 }
 
@@ -595,14 +602,55 @@ const optionSelected = (answer) =>
     document.querySelector(next_btn).classList.add("show"); 
 }
 
+const showContactForm = () =>
+{
+  document.querySelector(contactForm).classList.add("activeForm"); 
+  document.forms['contact'].reset();
+  document.getElementById(inputName).focus();
+}
+
+const nextScreenQuiz = () =>
+{
+  numSongs--;
+  document.querySelector(info_box).classList.remove("activeInfo"); 
+  document.querySelector(quiz_box).classList.remove("activeQuiz"); 
+  if (numSongs == 0 & ((questions.length * playedSongs.length) * 0.6 <= (totalScore + userScore)))
+  {
+    showContactForm();
+    
+  }
+  else
+  {
+    showResult();
+  }
+}
+
+const disableForm = () =>
+{
+  document.getElementById(submitForm).disabled = true;
+}
+
+const sendContactForm = async () =>
+{
+
+  let data = {name: document.getElementById(nameForm).value, email: document.getElementById(emailForm).value};
+  const awsLink = "http://ec2-3-142-222-146.us-east-2.compute.amazonaws.com:9090/participants/";
+  
+  await fetch(awsLink, {
+    method: "POST",
+    body: JSON.stringify(data)
+  }).then((res) => {
+    console.log("Request complete! response:", res);
+    showResult();
+  });
+}
+
 const showResult = () =>
 {
   const scoreText = document.querySelector(result_box).querySelector(".score_text");
   let scoreTag = `<span><p><i> ${songsList[songIndex].answers[0]} </i> - ${songsList[songIndex].name} </br> Composed by ${songsList[songIndex].answers[4]} </p></span>`;
   totalScore += userScore;
-  numSongs--;
-  document.querySelector(info_box).classList.remove("activeInfo"); 
-  document.querySelector(quiz_box).classList.remove("activeQuiz"); 
+  document.querySelector(contactForm).classList.remove("activeForm"); 
   document.querySelector(result_box).classList.add("activeResult");
   if (userScore > 2)
   { 
