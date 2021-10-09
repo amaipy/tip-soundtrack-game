@@ -56,7 +56,7 @@ let widthValue = 0;
 
 let currentTime = 15;
 let currentLineTime = 0;
-let numSongs = 3;
+let numSongs = 1;
 let numEasy = 2;
 
 const easyAnswers = 
@@ -633,13 +633,20 @@ const disableForm = () =>
 const sendContactForm = async () =>
 {
 
+  const csrftoken = Cookies.get('csrftoken');
+  const awsLink = "http://ec2-3-142-222-146.us-east-2.compute.amazonaws.com/participants/";
   let data = {name: document.getElementById(nameForm).value, email: document.getElementById(emailForm).value};
-  const awsLink = "http://ec2-3-142-222-146.us-east-2.compute.amazonaws.com:9090/participants/";
-  
-  await fetch(awsLink, {
-    method: "POST",
-    body: JSON.stringify(data)
-  }).then((res) => {
+
+  const request = new Request(
+    awsLink,
+      {
+          method: 'POST',
+          body: JSON.stringify(data),
+          headers: {'X-CSRFToken': csrftoken}
+      }
+  );
+  await fetch(request)
+  .then((res) => {
     console.log("Request complete! response:", res);
     showResult();
   });
