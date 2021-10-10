@@ -629,12 +629,10 @@ const disableForm = () =>
 {
   document.getElementById(submitForm).disabled = true;
 }
-
 const sendContactForm = async () =>
 {
 
-  const csrftoken = Cookies.get('csrftoken');
-  const awsLink = "https://ec2-3-142-222-146.us-east-2.compute.amazonaws.com/participants/";
+  const awsLink = "http://ec2-3-142-222-146.us-east-2.compute.amazonaws.com/participants/";
   let data = {name: document.getElementById(nameForm).value, email: document.getElementById(emailForm).value};
 
   const request = new Request(
@@ -642,7 +640,7 @@ const sendContactForm = async () =>
       {
           method: 'POST',
           body: JSON.stringify(data),
-          headers: {'X-CSRFToken': csrftoken}
+          headers: {'Content-Type': "application/json"}
       }
   );
   await fetch(request)
