@@ -56,7 +56,7 @@ let widthValue = 0;
 
 let currentTime = 15;
 let currentLineTime = 0;
-let numSongs = 1;
+let numSongs = 3;
 let numEasy = 2;
 
 const easyAnswers = 
