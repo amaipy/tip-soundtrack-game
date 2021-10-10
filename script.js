@@ -632,7 +632,7 @@ const disableForm = () =>
 const sendContactForm = async () =>
 {
 
-  const awsLink = "http://ec2-3-142-222-146.us-east-2.compute.amazonaws.com/participants/";
+  const awsLink = "https://ec2-3-142-222-146.us-east-2.compute.amazonaws.com/participants/";
   let data = {name: document.getElementById(nameForm).value, email: document.getElementById(emailForm).value};
 
   const request = new Request(
