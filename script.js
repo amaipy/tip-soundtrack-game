@@ -36,12 +36,7 @@ const next_btn = "footer .next_btn";
 
 const upperButton = 'upper-buttons';
 
-const contactForm = '.contact_form';
-const inputName = 'name';
 
-const submitForm = 'submit_form';
-const nameForm = 'name';
-const emailForm = 'mail';
 
 let lastWindow = 'quiz';
 
@@ -130,7 +125,7 @@ const songsList =
 [
   {
     name: "San Andreas Theme Song",
-    file: "san_andreas",
+    // file: "san_andreas",
     tip: "You are a former gangster returning home to attend to your mother's funeral",
     answers: [
       "Grand Theft Auto: San Andreas",
@@ -142,7 +137,8 @@ const songsList =
   },
   {
     name: "Drowning",
-    file: "drowning",
+    // file: "drowning",
+    file: "autumn-trail-loop-100-bpm-10020",
     tip: "You are blue and run very fast",
     answers: [
       "Sonic 1",
@@ -154,7 +150,8 @@ const songsList =
   },
   {
     name: "Dracula's Castle",
-    file: "draculas_castle",
+    // file: "draculas_castle",
+    file: "chill-escape-ig-version-60s-9650",
     tip: '"What is a man? A miserable little pile of secrets!"',
     answers: [
       "Castlevania: Symphony of the Night",
@@ -166,7 +163,8 @@ const songsList =
   },
   {
     name: "Overworld",
-    file: "overworld_zelda",
+    // file: "overworld_zelda",
+    file: "chilled-acoustic-indie-folk-ig-version-60s-9648",
     tip: '“IT’S DANGEROUS TO GO ALONE! TAKE THIS”',
     answers: [
       "Legend of Zelda",
@@ -179,7 +177,8 @@ const songsList =
   {
     name: "Opening Theme",
     tip: "You gotta catch 'em all!",
-    file: "opening_theme",
+    // file: "opening_theme",
+    file: "christmas-chill-lofi-launge-ig-version-60s-9466",
     answers: [
       "Pokémon Red and Blue",
       "RPG",
@@ -190,7 +189,8 @@ const songsList =
   },
   {
     name: "Overworld Theme",
-    file: "overworld_theme",
+    // file: "overworld_theme",
+    file: "crazy-120bpm-gmin-4059",
     tip: "Your objective is to save the Princess!",
     answers: [
       "Super Mario Bros.",
@@ -202,7 +202,8 @@ const songsList =
   },
   {
     name: "Not Tomorrow",
-    file: "not_tomorrow",
+    // file: "not_tomorrow",
+    file: "electro-trends-60s-9892",
     tip: "You are looking for your missing adopted daughter in a mysterious town",
     answers: [
       "Silent Hill",
@@ -214,7 +215,8 @@ const songsList =
   },
   {
     name: "Main Theme",
-    file: "main_theme",
+    // file: "main_theme",
+    file: "funky-trap-sax-4864",
     tip: "You are the mayor in a town full of anthropomorphic animals",
     answers: [
       "Animal Crossing: New Leaf",
@@ -226,7 +228,8 @@ const songsList =
   },
   {
     name: "Title Screen",
-    file: "title_screen",
+    // file: "title_screen",
+    file: "jacob-field-moonshiner-royalty-free-music-8866",
     tip: "You are recovering your stolen banana hoard",
     answers: [
       "Donkey Kong Country",
@@ -238,7 +241,8 @@ const songsList =
   },
   {
     name: "Dr. Wily's Castle",
-    file: "dr_wilys_castle",
+    // file: "dr_wilys_castle",
+    file: "lofi-night-dreaming-version-60s-9683",
     tip: "You are on your way to defeat a evil Dr. and his rogue robots",
     answers: [
       "Mega Man 2",
@@ -250,7 +254,8 @@ const songsList =
   },
   {
     name: "Scattered and Lost",
-    file: "scattered_and_lost",
+    // file: "scattered_and_lost",
+    file: "lucky-me-version-60s-9720",
     tip: "You are trying to reach the top of a mountain, fighting your inner demons along the way",
     answers: [
       "Celeste",
@@ -262,7 +267,8 @@ const songsList =
   },
   {
     name: "Megalovania",
-    file: "megalovania",
+    // file: "megalovania",
+    file: "my-lofi-morning-music-ig-version-60s-9651",
     tip: "You feel like you're going to have a bad time",
     answers: [
       "Undertale",
@@ -274,7 +280,8 @@ const songsList =
   },
   {
     name: "Theme",
-    file: "theme_crash",
+    // file: "theme_crash",
+    file: "night-jazz-beats-10039",
     tip: "You want to prevent Cortex's plans for world domination and rescue your girlfriend",
     answers: [
       "Crash Bandicoot",
@@ -286,7 +293,8 @@ const songsList =
   },
   {
     name: "Prelude",
-    file: "prelude",
+    // file: "prelude",
+    file: "undertaker-8529",
     tip: "You are the Light Warriors, who carry the world's four elemental crystals",
     answers: [
       "Final Fantasy I",
@@ -298,7 +306,8 @@ const songsList =
   },
   {
     name: "Brinstar Theme",
-    file: "brinstar_theme",
+    // file: "brinstar_theme",
+    file: "unpacking-version-60s-9719",
     tip: "You are a bounty hunter exploring the planet Zebes",
     answers: [
       "Metroid",
@@ -549,7 +558,7 @@ const showQuetions = (index) =>
 {
   const que_text = document.querySelector(".que_text");
   const options = shuffle(selectAnswers(index));
-  const que_tag = `<span> ${(index + 1)}.${questions[index]} </span>`;
+  const que_tag = `<span> ${(index + 1)}. ${questions[index]} </span>`;
   const option_tag = `<div class="option"><span>${options[0]}</span></div> 
   <div class="option"><span>${options[1]}</span></div>
   <div class="option"><span>${options[2]}</span></div>
@@ -602,60 +611,20 @@ const optionSelected = (answer) =>
     document.querySelector(next_btn).classList.add("show"); 
 }
 
-const showContactForm = () =>
-{
-  document.querySelector(contactForm).classList.add("activeForm"); 
-  document.forms['contact'].reset();
-  document.getElementById(inputName).focus();
-}
-
 const nextScreenQuiz = () =>
 {
   numSongs--;
   document.querySelector(info_box).classList.remove("activeInfo"); 
   document.querySelector(quiz_box).classList.remove("activeQuiz"); 
-  if (numSongs == 0 & ((questions.length * playedSongs.length) * 0.6 <= (totalScore + userScore)))
-  {
-    showContactForm();
-    
-  }
-  else
-  {
-    showResult();
-  }
+  showResult();
 }
 
-const disableForm = () =>
-{
-  document.getElementById(submitForm).disabled = true;
-}
-const sendContactForm = async () =>
-{
-
-  const awsLink = "https://ec2-3-142-222-146.us-east-2.compute.amazonaws.com/participants/";
-  let data = {name: document.getElementById(nameForm).value, email: document.getElementById(emailForm).value};
-
-  const request = new Request(
-    awsLink,
-      {
-          method: 'POST',
-          body: JSON.stringify(data),
-          headers: {'Content-Type': "application/json"}
-      }
-  );
-  await fetch(request)
-  .then((res) => {
-    console.log("Request complete! response:", res);
-    showResult();
-  });
-}
 
 const showResult = () =>
 {
   const scoreText = document.querySelector(result_box).querySelector(".score_text");
-  let scoreTag = `<span><p><i> ${songsList[songIndex].answers[0]} </i> - ${songsList[songIndex].name} </br> Composed by ${songsList[songIndex].answers[4]} </p></span>`;
+  let scoreTag = `<span><i>Original song replaced to avoid Copyright Infringement</i></span><span><p><i> ${songsList[songIndex].answers[0]} </i> - ${songsList[songIndex].name} </br> Composed by ${songsList[songIndex].answers[4]} </p></span>`;
   totalScore += userScore;
-  document.querySelector(contactForm).classList.remove("activeForm"); 
   document.querySelector(result_box).classList.add("activeResult");
   if (userScore > 2)
   { 
